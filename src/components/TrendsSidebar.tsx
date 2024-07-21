@@ -101,7 +101,7 @@ async function TrendingTopics() {
               {hashtag}
             </p>
             <p className="text-sm text-muted-foreground">
-              {formatNumber(1000)} {count === 1 ? "post" : "posts"}
+              {formatNumber(count)} {count === 1 ? "post" : "posts"}
             </p>
           </Link>
         )
