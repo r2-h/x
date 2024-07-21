@@ -1,6 +1,6 @@
-import { z } from "zod";
+import { z } from "zod"
 
-const requiredString = z.string().trim().min(1, "Required");
+const requiredString = z.string().trim().min(1, "Required")
 
 export const signUpSchema = z.object({
   email: requiredString.email("Invalid email address"),
@@ -12,12 +12,17 @@ export const signUpSchema = z.object({
     8,
     "Password must be at least 8 characters long",
   ),
-});
+})
 
 export const loginSchema = z.object({
   username: requiredString,
   password: requiredString,
-});
+})
 
-export type SignUpSchema = z.infer<typeof signUpSchema>;
-export type LoginSchema = z.infer<typeof loginSchema>;
+export const createPostSchema = z.object({
+  content: requiredString,
+})
+
+export type SignUpSchema = z.infer<typeof signUpSchema>
+export type LoginSchema = z.infer<typeof loginSchema>
+export type CreatePostSchema = z.infer<typeof createPostSchema>
