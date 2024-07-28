@@ -22,7 +22,7 @@ export default function PostEditor() {
         italic: false,
       }),
       Placeholder.configure({
-        placeholder: "Whatscrackalackin",
+        placeholder: "tip-tap placeholder",
       }),
     ],
     content: "<p>Hello World! 🌎️</p>",
