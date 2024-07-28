@@ -1,10 +1,10 @@
-import { PostData } from "@/lib/types";
-import { formatRelativeDate } from "@/lib/utils";
-import Link from "next/link";
-import UserAvatar from "../UserAvatar";
+import { PostData } from "@/lib/types"
+import { formatRelativeDate } from "@/lib/utils"
+import Link from "next/link"
+import UserAvatar from "../UserAvatar"
 
 interface PostProps {
-  post: PostData;
+  post: PostData
 }
 
 export default function Post({ post }: PostProps) {
@@ -25,11 +25,11 @@ export default function Post({ post }: PostProps) {
             href={`/posts/${post.id}`}
             className="block text-sm text-muted-foreground hover:underline"
           >
-            {/* {formatRelativeDate(post.createdAt)} */}
+            {formatRelativeDate(post.createdAt)}
           </Link>
         </div>
       </div>
       <div className="whitespace-pre-line break-words">{post.content}</div>
     </article>
-  );
+  )
 }

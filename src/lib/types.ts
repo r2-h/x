@@ -5,7 +5,7 @@ export const userDataSelect = {
   username: true,
   displayName: true,
   avatarUrl: true,
-} satisfies Prisma.UserSelect;
+} satisfies Prisma.UserSelect
 
 export const postDataInclude = {
   user: {
@@ -16,3 +16,8 @@ export const postDataInclude = {
 export type PostData = Prisma.PostGetPayload<{
   include: typeof postDataInclude
 }>
+
+export type PostsPage = {
+  posts: PostData[]
+  nextCursor: string | null
+}

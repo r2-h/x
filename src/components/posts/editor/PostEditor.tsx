@@ -8,8 +8,13 @@ import UserAvatar from "@/components/UserAvatar"
 import LoadingButton from "@/components/LoadingButton"
 import { cn } from "@/lib/utils"
 import "./styles.css"
+import { useSubmitPostMutation } from "./mutations"
 
 export default function PostEditor() {
+  const { user } = useSession()
+
+  const mutation = useSubmitPostMutation()
+
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
@@ -23,16 +28,15 @@ export default function PostEditor() {
     content: "<p>Hello World! 🌎️</p>",
   })
 
-  const { user } = useSession()
-
   const input =
     editor?.getText({
       blockSeparator: "\n",
     }) || ""
 
-  async function onSubmit() {
-    await submitPost(input)
-    editor?.commands.clearContent()
+  function onSubmit() {
+    mutation.mutate(input, {
+      onSuccess: () => editor?.commands.clearContent(),
+    })
   }
 
   return (
@@ -48,7 +52,7 @@ export default function PostEditor() {
         <div className="flex items-center justify-end gap-3">
           <LoadingButton
             onClick={onSubmit}
-            loading={false}
+            loading={mutation.isPending}
             disabled={!input.trim()}
             className="min-w-20"
           >
