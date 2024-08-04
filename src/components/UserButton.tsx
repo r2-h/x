@@ -31,7 +31,7 @@ export default function UserButton({ className }: UserButtonProps) {
   const { theme, setTheme } = useTheme()
 
   const queryClient = useQueryClient()
-
+  console.log(user)
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -76,7 +76,7 @@ export default function UserButton({ className }: UserButtonProps) {
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onClick={() => {
-            queryClient.clear() // удалить кеш 
+            queryClient.clear() // удалить кеш
             logout()
           }}
         >

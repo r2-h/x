@@ -17,10 +17,17 @@ export function getUserDataSelect(loggedInUserId: string) {
     _count: {
       select: {
         followers: true,
+        posts: true,
       },
     },
+    bio: true,
+    createdAt: true,
   } satisfies Prisma.UserSelect
 }
+
+export type UserData = Prisma.UserGetPayload<{
+  select: ReturnType<typeof getUserDataSelect>
+}>
 
 export function getPostDataInclude(loggedInUserId: string) {
   return {
